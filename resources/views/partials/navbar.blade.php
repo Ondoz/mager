@@ -90,7 +90,7 @@
                                             My Profile
                                         </div>
                                         <div class="kt-notification__item-time">
-                                            Account settings and more
+                                            Setting Account Your Profile
                                         </div>
                                     </div>
                                 </a>
