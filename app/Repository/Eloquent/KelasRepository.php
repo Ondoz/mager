@@ -19,7 +19,6 @@ class KelasRepository implements RepositoryInterface
         $this->user = $user;
         $this->kls = $kls;
         $this->dk = $dk;
-
     }
 
     public function getKelas()
@@ -67,10 +66,10 @@ class KelasRepository implements RepositoryInterface
                     'user_id' => $user->id,
                     'status' => '0',
                 ]);
-                return back()->with('success', 'Kelas telah berhasil ditambahkan!');
+                return back()->with('success', 'Kelas is Exist!');
             }
         } else {
-            return back()->with('warning', 'Kode Kelas Tidak di Temikan!');
+            return back()->with('warning', 'Code Kelass Not Worthid');
         }
     }
 
@@ -81,9 +80,9 @@ class KelasRepository implements RepositoryInterface
             $user =  $this->user::find(auth()->user()->id);
             if ($user->dk()->where('kelas_id', $kelas->id)->exists()) {
                 $questions =  Questions::where('kelas_id', $kelas->id)->with('user')->latest()->paginate(10);
-                return view('kelas.kls_show', compact('kelas','questions'))->render();
+                return view('kelas.kls_show', compact('kelas', 'questions'))->render();
             } else {
-                return back()->with('info', 'Kelas Tidak Ada!');
+                return back()->with('info', 'No Class in Hire');
             }
         }
     }
@@ -110,5 +109,4 @@ class KelasRepository implements RepositoryInterface
         $siswa = DataKelas::where('kelas_id', $id)->get();
         return view('kelas.kls_siswa', compact('siswa', 'uuid'));
     }
-
 }
