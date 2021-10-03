@@ -69,7 +69,7 @@ class KelasRepository implements RepositoryInterface
                 return back()->with('success', 'Kelas is Exist!');
             }
         } else {
-            return back()->with('warning', 'Code Kelass Not Worthid');
+            return back()->with('warning', 'kode kelas Not Worthid');
         }
     }
 
